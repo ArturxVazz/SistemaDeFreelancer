@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PROJETO_JAVA_FREELANCER.iml" filepath="$PROJECT_DIR$/.idea/PROJETO_JAVA_FREELANCER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/systemOfFreelancers/systemOfFreelancers.iml" filepath="$PROJECT_DIR$/systemOfFreelancers/systemOfFreelancers.iml" />
+    </modules>
+  </component>
+</project>
