@@ -23,6 +23,13 @@ public class SistemaFreeLancersService {
         }
     }
 
+    public void top3Freelancers() {
+        n1.getListaFreelancers().stream()
+                .sorted((f1, f2) -> Double.compare())
+                .limit(3)
+                .forEach(f -> System.out.println(f.getNome() + " - R$" + f1.calcularGanhosTotais()));
+    }
+
 
 
 

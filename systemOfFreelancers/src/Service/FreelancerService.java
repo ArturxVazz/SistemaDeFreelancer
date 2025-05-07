@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class FreelancerService {
     SistemaFreeLancersEntity s1 = new SistemaFreeLancersEntity();
+    FreelancerEntity f1 = new FreelancerEntity();
 
     public void adicionarProjeto(FreelancerEntity freelancer, ProjetoEntity projeto) {
         freelancer.getListaProjetos().add(projeto);
@@ -33,20 +34,15 @@ public class FreelancerService {
     }
 
     public String mostrandoGanhos (FreelancerEntity f1){
-        return ("Seu ganhos totais foram: " + calculoGanhosTotais());
+        return ("Seu ganhos totais foram: " + calcularGanhosTotais(f1));
     }
 
-    public static double calculoGanhosTotais()
-    {
-        double variavelDeControle = 0.0;
-
-        for(ProjetoEntity projeto : s1.getListaFreelancers() )
-        {
-            variavelDeControle += projeto.getValor();
+    public double calcularGanhosTotais(FreelancerEntity freelancer) {
+        double total = 0.0;
+        for (ProjetoEntity projeto : freelancer.getListaProjetos()) {
+            total += projeto.getValor();
         }
-
-        return variavelDeControle;
-
+        return total;
     }
 
 
