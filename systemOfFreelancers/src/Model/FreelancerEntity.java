@@ -1,4 +1,4 @@
-package Entities;
+package Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,12 @@ public class FreelancerEntity {
 
     private List<ProjetoEntity> listaProjetos = new ArrayList<>();
 
-
     public FreelancerEntity(){}
 
     public FreelancerEntity(String nome, String areaDeAtuacao) {
         this.nome = nome;
         this.areaDeAtuacao = areaDeAtuacao;
+
     }
 
     public String getNome() {
@@ -31,6 +31,10 @@ public class FreelancerEntity {
 
     public void setAreaDeAtuacao(String areaDeAtuacao) {
         this.areaDeAtuacao = areaDeAtuacao;
+    }
+
+    public void setListaProjetos(List<ProjetoEntity> listaProjetos) {
+        this.listaProjetos = listaProjetos;
     }
 
     public List<ProjetoEntity> getListaProjetos() {

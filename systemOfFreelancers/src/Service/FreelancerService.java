@@ -1,19 +1,27 @@
 package Service;
 
-import Entities.FreelancerEntity;
-import Entities.ProjetoEntity;
-import Entities.SistemaFreeLancersEntity;
+import Model.FreelancerEntity;
+import Model.ProjetoEntity;
+import Repository.SistemaFreeLancersEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class FreelancerService {
-    SistemaFreeLancersEntity s1 = new SistemaFreeLancersEntity();
-    FreelancerEntity f1 = new FreelancerEntity();
+    SistemaFreeLancersEntity sf1 = new SistemaFreeLancersEntity();
 
-    public void adicionarProjeto(FreelancerEntity freelancer, ProjetoEntity projeto) {
-        freelancer.getListaProjetos().add(projeto);
+    public FreelancerService(SistemaFreeLancersEntity sf1) {
+        this.sf1 = sf1;
+    }
+
+    public void adicionarProjetoaFreelancer (String nomeFreelancer, String nomeProjeto, String cliente, double valor, int duracaoEmDias) {
+        FreelancerEntity freelancer = sf1.buscarFreelancer(nomeFreelancer);
+        if (freelancer != null) {
+            ProjetoEntity projeto = new ProjetoEntity(nomeProjeto, cliente, valor, duracaoEmDias);
+            freelancer.getListaProjetos().add(projeto);
+        } else {
+            System.out.println("Freelancer não encontrado.");
+        }
     }
 
     public FreelancerEntity criarFreelancer(){
@@ -26,15 +34,11 @@ public class FreelancerService {
         System.out.println("Digite a area do freeLancer:");
         String areaAtuacao = input.nextLine();
 
-        FreelancerEntity f1 = new FreelancerEntity(nomeFreeLancer, areaAtuacao);
+        FreelancerEntity f1 = new FreelancerEntity(nomeFreeLancer,areaAtuacao);
 
         System.out.println("Usuario Cadastrado com sucesso");
 
         return f1;
-    }
-
-    public String mostrandoGanhos (FreelancerEntity f1){
-        return ("Seu ganhos totais foram: " + calcularGanhosTotais(f1));
     }
 
     public double calcularGanhosTotais(FreelancerEntity freelancer) {
@@ -45,12 +49,41 @@ public class FreelancerService {
         return total;
     }
 
+    public ProjetoEntity atrelnadoFreelancerAProjeto() {
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Qual o nome do projeto:");
+        input.nextLine();
+        String nomeProjeto = input.nextLine();
+
+        System.out.println("Qual o nome do cliente:");
+        String nomeCliente = input.nextLine();
+
+        System.out.println("Valor do projeto: ");
+        double valorProjeto = input.nextDouble();
+
+        System.out.println("Duração de dias do projeto:");
+        int duracaoProjeto = input.nextInt();
+        input.nextLine();
 
 
+        ProjetoEntity p1 = new ProjetoEntity(nomeProjeto, nomeCliente, valorProjeto, duracaoProjeto);
 
+        return p1;
+    }
 
+    public void cadastroUsuario(FreelancerEntity freelancer) {
+        sf1.getListaFreelancers().add(freelancer);
+    }
 
+    public void exibirFreelancersComGanhos() {
+        List<FreelancerEntity> freelancers = sf1.getListaFreelancers();
 
+        for (FreelancerEntity freelancer : freelancers) {
+            System.out.println(freelancer.getNome() + " - R$" + calcularGanhosTotais(freelancer));
+        }
+    }
 
 
 
