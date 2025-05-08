@@ -46,14 +46,4 @@ public class ProjetoEntity {
     public void setDuracaoEmDias(int duracaoEmDias) {
         this.duracaoEmDias = duracaoEmDias;
     }
-
-    @Override
-    public String toString() {
-        return "ProjetoEntity{" +
-                "nomeProjeto='" + nomeProjeto + '\'' +
-                ", cliente='" + cliente + '\'' +
-                ", valor=" + valor +
-                ", duracaoEmDias=" + duracaoEmDias +
-                '}';
-    }
 }

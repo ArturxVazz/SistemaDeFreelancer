@@ -36,12 +36,4 @@ public class FreelancerEntity {
     public List<ProjetoEntity> getListaProjetos() {
         return listaProjetos;
     }
-
-    @Override
-    public String toString() {
-        return "FreelancerEntity{" +
-                "nome='" + nome + '\'' +
-                ", areaDeAtuacao='" + areaDeAtuacao + '\'' +
-                '}';
-    }
 }
